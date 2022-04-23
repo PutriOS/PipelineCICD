@@ -56,4 +56,23 @@ public class User {
         restAssuredThat(response -> response.body("'job'", equalTo("leader")));
     }
 
+    @Step("I send PUT HTTP request")
+    public void iSendPUTHTTPRequest() {
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("name", "morpheus");
+        requestBody.put("job", "zion resident");
+
+        SerenityRest.given().header("Content-Type", "application/json").body(requestBody.toJSONString()).put(setApiEndpoint());
+    }
+
+    @Step("I receive valid data for updated user")
+    public void iReceiveValidDataForUpdatedUser() {
+        restAssuredThat(response -> response.body("'name'", CoreMatchers.equalTo("morpheus")));
+        restAssuredThat(response -> response.body("'job'", CoreMatchers.equalTo("zion resident")));
+    }
+
+    @Step("I send DELETE HTTP request")
+    public void iSendDELETEHTTPRequest() {
+        SerenityRest.given().delete(setApiEndpoint());
+    }
 }

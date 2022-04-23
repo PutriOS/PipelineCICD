@@ -42,6 +42,21 @@ public class UserStepDefinitions {
         user.iReceiveValidHTTPResponseCode(arg0);
     }
 
+    @When("I send PUT HTTP request")
+    public void iSendPUTHTTPRequest() {
+        user.iSendPUTHTTPRequest();
+    }
+
+    @And("I receive valid data for updated user")
+    public void iReceiveValidDataForUpdatedUser() {
+        user.iReceiveValidDataForUpdatedUser();
+    }
+
+    @When("I send DELETE HTTP request")
+    public void iSendDELETEHTTPRequest() {
+        user.iSendDELETEHTTPRequest();
+    }
+
 }
 
 
